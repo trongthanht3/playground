@@ -6,5 +6,8 @@ edition = "2021"
 [dependencies]
 chrono = "0.4.38"
 ndarray = "0.15.6"
+ndarray-rand = "0.14.0"
 polars = { version = "0.40.0", features = ["lazy", "temporal", "describe", "json", "parquet", "dtype-datetime", "ndarray"] }
 rand = "0.8.5"
+rand_chacha = "0.3.1"
+rand_isaac = "0.3.0"
