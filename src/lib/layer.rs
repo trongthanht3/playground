@@ -75,8 +75,12 @@ impl Layer for Dense {
         return self.layer_properties.output.clone();
     }
 
-    fn backward(&mut self, x: Array2<f32>) -> Array2<f32> {
-        return x.dot(&self.weights.t());
+    fn backward(&mut self, d_value: Array2<f32>) -> Array2<f32> {
+        let mut d_weights = self.layer_properties.input.clone().t().dot(&d_value);
+        let mut d_bias = d_value.clone().sum_axis(Axis(0));
+
+        let d_inputs = d_value.dot(&self.weights.t());
+        return d_inputs;
     }
 
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
